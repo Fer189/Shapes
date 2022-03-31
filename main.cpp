@@ -1,10 +1,12 @@
 #include "Square.h"
 #include "Shape.h"
+#include "EquilateralTriangle.h"
 #include "Triangle.h"
 #include "Canva.h"
 #include "Rectangle.h"
-
+#include "HollowSquare.h"
 using namespace std;
+
 int main() {
     Shape* s = nullptr;
     Canva c;
@@ -15,15 +17,21 @@ int main() {
         s = new Square();
     }
     else if(option == 2) {
-        s = new Triangle();
+        s = new EquilateralTriangle();
     }
     else if(option == 3) {
         s = new Rectangle();
+    }
+    else if(option == 4) {
+        s = new HollowSquare();
+    }
+    else if(option == 5) {
+        s = new Triangle();
     }
     if(s != nullptr) {
         c.printShape(s);
         delete s;
     }
-    cout << "-----------------------" << endl;
+    cout << "-----------------------------------" << endl;
     return 1;
 }
