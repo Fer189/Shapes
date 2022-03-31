@@ -5,33 +5,22 @@
 #include "Canva.h"
 #include "Rectangle.h"
 #include "HollowSquare.h"
+#include "Menu.h"
 using namespace std;
 
 int main() {
-    Shape* s = nullptr;
+    int selector;
+    int terminado = 1;
+    Menu menu;
     Canva c;
-    int option = 0;
-    cout << "Que quieres imprimir?" << endl;
-    cin >> option;
-    if(option == 1) {
-        s = new Square();
+    while(terminado == 1) {
+        menu.select();
+        cin >> selector;
+        c.printShape(menu.selected(selector));
+        terminado = menu.finish();
+        while(terminado != 1 && terminado != 2) {
+            terminado = menu.finish();
+        }
     }
-    else if(option == 2) {
-        s = new EquilateralTriangle();
-    }
-    else if(option == 3) {
-        s = new Rectangle();
-    }
-    else if(option == 4) {
-        s = new HollowSquare();
-    }
-    else if(option == 5) {
-        s = new Triangle();
-    }
-    if(s != nullptr) {
-        c.printShape(s);
-        delete s;
-    }
-    cout << "-----------------------------------" << endl;
     return 1;
 }
